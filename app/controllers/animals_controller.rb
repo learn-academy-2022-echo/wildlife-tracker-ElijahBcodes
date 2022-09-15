@@ -1,8 +1,8 @@
 class AnimalsController < ApplicationController
     #Index
    def index 
-        animals = Animal.all 
-        render json: animals
+        @animals = Animal.all 
+        render json: @animals
     end 
     #Show
     def show 
@@ -40,9 +40,12 @@ class AnimalsController < ApplicationController
             render json: animal.errors
         end
     end 
+
    private 
     def animal_params
         params.require(:animal).permit(:name, :binomial)
     end  
+
+
     
 end
