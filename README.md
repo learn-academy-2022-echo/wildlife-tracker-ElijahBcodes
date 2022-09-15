@@ -9,7 +9,7 @@ Branch: animal-crud-actions
 
 Acceptance Criteria
 
-Create a resource for animal with the following information: common name and scientific binomial✅
+# Create a resource for animal with the following information: common name and scientific binomial✅
 
 $rails generate resource Animal name:string binomial:string
 
@@ -40,13 +40,13 @@ $rails db:migrate
  PUT    /animals/:id(.:format)  animals#update
  DELETE /animals/:id(.:format)  animals#destroy
 
-Can see the data response of all the animals✅
+# Can see the data response of all the animals✅
     -make a show method in the animal controller
-Can create a new animal in the database✅
+# Can create a new animal in the database✅
 >Animal.create(name:'Dragon', binomial:'Draconus')
 >Animal.create(name:'Panda', binomial:'bear')
     -make a method for create in the animal controller
-Can update an existing animal in the database✅
+# Can update an existing animal in the database✅
     -make a method for update in the animal controller
   #Can remove an animal entry in the database✅
 
@@ -62,10 +62,16 @@ Hint: An animal has_many sightings (
   rails g resource Sighting animal_id:integer  latitude:integer longitude:integer date:string
 Hint: Date is written in Active Record as yyyy-mm-dd (“2022-07-28")
 
-Can create a new animal sighting in the database
-Can update an existing animal sighting in the database
-Can remove an animal sighting in the database
-
+# Can create a new animal sighting in the database  ✅
+ Sighting.create(animal_id:1, latitude:6756, longitude:5675, date:'2022-07-28')
+# Can update an existing animal sighting in the database✅
+make an updatae method in controller 
+add the has_many to sightings in animal.rb 
+<!-- class Animal < ApplicationRecord
+    has_many:sightings
+end -->
+# Can remove an animal sighting in the database✅
+ add a destroy method in controller
 
 Story 3: In order to see the wildlife sightings, as a user of the API, I need to run reports on animal sightings.
 
@@ -73,16 +79,16 @@ Branch: animal-sightings-reports
 
 Acceptance Criteria
 
-Can see one animal with all its associated sightings
-Hint: Checkout this example on how to include associated records
-Can see all the all sightings during a given time period
-Hint: Your controller can use a range to look like this:
+# Can see one animal with all its associated sightings
+  Hint: Checkout this example on how to include associated records
+# Can see all the all sightings during a given time period
+  Hint: Your controller can use a range to look like this:
 class SightingsController < ApplicationController
-  def index
+  <!-- def index
     sightings = Sighting.where(date: params[:start_date]..params[:end_date])
     render json: sightings
   end
-end
+end -->
 Hint: Be sure to add the start_date and end_date to what is permitted in your strong parameters method
 Hint: Utilize the params section in Postman to ease the developer experience
 Hint: Routes with params
