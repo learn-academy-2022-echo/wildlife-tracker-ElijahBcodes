@@ -23,8 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_025231) do
 
   create_table "sightings", force: :cascade do |t|
     t.integer "animal_id"
-    t.string "latitude"
-    t.string "longitude"
+    t.integer "latitude"
+    t.integer "longitude"
     t.string "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
