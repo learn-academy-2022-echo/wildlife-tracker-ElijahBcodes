@@ -7,7 +7,7 @@ class SightingsController < ApplicationController
    
     #Show
         def show 
-            sighting = Sighting.find(id: params[:id])
+            sighting = Sighting.find_by(id: params[:id])
             if sighting
             render json: sighting, include:[animals]
             else 
